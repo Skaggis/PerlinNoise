@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class TerrainCreator : MonoBehaviour
 {
     SpriteShapeController shape;
     public int scale;
-    public int numberOfPoints;
+    public int numberOfPoints = 67;
     //egen offsset
     public int distBetweenPoints = 3;
-    public int yCounterMax = 100;
+    public int plateau = 100;
+    private int plateauEnd;
 
     // Start is called before the first frame update
     void Start()
@@ -19,47 +21,62 @@ public class TerrainCreator : MonoBehaviour
         
         //0 & 1 är vänster punkter, 2 & 3 höger punkter
         
-       //shape.spline.SetPosition(0, shape.spline.GetPosition(0) + Vector3.left * scale);
-       //shape.spline.SetPosition(1, shape.spline.GetPosition(1) + Vector3.left * scale);
+        shape.spline.SetPosition(0, shape.spline.GetPosition(0) + Vector3.left * scale);
+        shape.spline.SetPosition(1, shape.spline.GetPosition(1) + Vector3.left * scale);
         
         shape.spline.SetPosition(2, shape.spline.GetPosition(2) + Vector3.right * scale);
         shape.spline.SetPosition(3, shape.spline.GetPosition(3) + Vector3.right * scale);
 
         //scale 100, num of points 67, distance between 3
-
+        
         Vector3 nextYvalue;
-        int yCounter = 0;
-        float xPos = shape.spline.GetPosition(1).x + distBetweenPoints;
-        Vector3 currentYvalue = new Vector3(xPos, 2 );
+        int plateau = 0;
+
         //sätter ut punkter, random höjdvärde
         for (int i = 0; i < numberOfPoints; i++)
         {
             //i+1 och i+2 är för att sätta punkter på övre kanten av spline:en
             //sätter ut punkter mellan punkt 1 och punkt 2
             //första värdet som "plussas på" är från punkt 1 pos
-             xPos = shape.spline.GetPosition(i + 1).x + distBetweenPoints;
-            //Vector3 currentYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
-            Debug.Log(yCounter);
 
-            if (yCounter < yCounterMax)
+            float xPos = shape.spline.GetPosition(i + 1).x + distBetweenPoints;
+            Vector3 currentYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
+
+            if (plateau < plateauEnd)
             {
-                //stanna som samma Yvärde
+                //stanna som samma Yvärde som redan genererats
                 shape.spline.InsertPointAt(i + 2, currentYvalue);
-                yCounter++;
-                
+                plateau++;
 
             }
-            else
+            
+            else if (plateau == plateauEnd)
             {
                 //sen ska Y-värdet uppdateras när counterMax nåtts 
-                nextYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
+             
+                nextYvalue = new Vector3(xPos, 2);
+               
                 currentYvalue = nextYvalue;
+                
                 shape.spline.InsertPointAt(i + 2, currentYvalue);
                 
-                yCounter = 0;
+                plateau++;
             }
             
-            
+            else if (plateau > plateauEnd)
+            {
+                //sen ska Y-värdet uppdateras när counterMax nåtts 
+
+                nextYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
+
+                currentYvalue = nextYvalue;
+
+                shape.spline.InsertPointAt(i + 2, currentYvalue);
+
+                plateau++;
+            }
+
+
 
         }
 
@@ -88,6 +105,6 @@ public class TerrainCreator : MonoBehaviour
     void Update()
     {
 
-        
+        Debug.Log(yCounter);
     }
 }
