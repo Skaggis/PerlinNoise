@@ -13,14 +13,27 @@ MonoBehaviour:
   m_Name: profil
   m_EditorClassIdentifier: 
   m_Angles:
-  - m_Start: -90
-    m_End: 90
+  - m_Start: -45
+    m_End: 45
     m_Order: 0
     m_Sprites:
-    - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
-    - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
-    - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
-  m_FillTexture: {fileID: 2800000, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
+    - {fileID: 21300000, guid: 5400319e9a068ed42aeb2c884b81d532, type: 3}
+  - m_Start: 45
+    m_End: 133
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: 7d1890c6c389d304f858669001d0dcc3, type: 3}
+  - m_Start: -141
+    m_End: -45
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: 216c72c195b17624788bfe125e15c746, type: 3}
+  - m_Start: 133
+    m_End: 219
+    m_Order: 0
+    m_Sprites:
+    - {fileID: 21300000, guid: 1e8c4f572ae0c7a459f6c8dc7c7629c5, type: 3}
+  m_FillTexture: {fileID: 2800000, guid: be496234c475d2a40b09711bd80d3a0a, type: 3}
   m_CornerSprites:
   - m_CornerType: 0
     m_Sprites:

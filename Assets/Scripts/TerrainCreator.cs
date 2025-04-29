@@ -11,8 +11,8 @@ public class TerrainCreator : MonoBehaviour
     public int numberOfPoints = 67;
     //egen offsset
     public int distBetweenPoints = 3;
-    public int plateau = 100;
-    private int plateauEnd;
+    public int plateau;
+    private int plateauEnd = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +31,7 @@ public class TerrainCreator : MonoBehaviour
         
         Vector3 nextYvalue;
         int plateau = 0;
+        float xPos = shape.spline.GetPosition(1).x + distBetweenPoints;
 
         //sätter ut punkter, random höjdvärde
         for (int i = 0; i < numberOfPoints; i++)
@@ -39,44 +40,38 @@ public class TerrainCreator : MonoBehaviour
             //sätter ut punkter mellan punkt 1 och punkt 2
             //första värdet som "plussas på" är från punkt 1 pos
 
-            float xPos = shape.spline.GetPosition(i + 1).x + distBetweenPoints;
+            xPos = shape.spline.GetPosition(i+1).x + distBetweenPoints;
+
             Vector3 currentYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
 
             if (plateau < plateauEnd)
             {
-                //stanna som samma Yvärde som redan genererats
+                xPos = shape.spline.GetPosition(i + 1).x + distBetweenPoints;
+                nextYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
+                currentYvalue = nextYvalue;
                 shape.spline.InsertPointAt(i + 2, currentYvalue);
                 plateau++;
 
             }
-            
+            //random upp til 10
             else if (plateau == plateauEnd)
             {
                 //sen ska Y-värdet uppdateras när counterMax nåtts 
              
                 nextYvalue = new Vector3(xPos, 2);
-               
                 currentYvalue = nextYvalue;
-                
                 shape.spline.InsertPointAt(i + 2, currentYvalue);
-                
                 plateau++;
             }
             
             else if (plateau > plateauEnd)
             {
-                //sen ska Y-värdet uppdateras när counterMax nåtts 
-
-                nextYvalue = new Vector3(xPos, 2 * Mathf.PerlinNoise(i * Random.Range(5f, 15f), 0));
-
+             
+                nextYvalue = new Vector3(xPos, 2);
                 currentYvalue = nextYvalue;
-
-                shape.spline.InsertPointAt(i + 2, currentYvalue);
-
+                shape.spline.InsertPointAt(i + 2, currentYvalue); //too close to neighbor
                 plateau++;
             }
-
-
 
         }
 
@@ -102,9 +97,5 @@ public class TerrainCreator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
 
-        Debug.Log(yCounter);
-    }
 }

@@ -240,8 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 10
   numberOfPoints: 30
-  percentageOfPoints: 0
   distBetweenPoints: 3
+  plateau: 0
 --- !u!114 &492294068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,15 +545,15 @@ MonoBehaviour:
   m_UpdateCollider: 1
   m_EnableTangents: 0
   m_GeometryCached: 0
-  m_UTess2D: 1
+  m_UTess2D: 0
   m_Creator: {fileID: 0}
   m_Modifiers: []
   m_ColliderSegment:
-  - {x: -0.99899995, y: -1}
+  - {x: -0.99950016, y: -0.99950004}
   - {x: -0.99950004, y: 0.99950016}
   - {x: 0.99950016, y: 0.99950004}
-  - {x: 1, y: -1}
-  - {x: -0.99899995, y: -1}
+  - {x: 0.99950004, y: -0.99950016}
+  - {x: -0.99950016, y: -0.99950004}
 --- !u!1971053207 &571399698
 SpriteShapeRenderer:
   m_ObjectHideFlags: 0
@@ -598,11 +598,12 @@ SpriteShapeRenderer:
   m_SortingOrder: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_MaskInteraction: 0
-  m_ShapeTexture: {fileID: 2800000, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
+  m_ShapeTexture: {fileID: 2800000, guid: be496234c475d2a40b09711bd80d3a0a, type: 3}
   m_Sprites:
-  - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
-  - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
-  - {fileID: 7482667652216324306, guid: 85ed73df01ecaa44bbe10495342b7a5d, type: 3}
+  - {fileID: 21300000, guid: 5400319e9a068ed42aeb2c884b81d532, type: 3}
+  - {fileID: 21300000, guid: 7d1890c6c389d304f858669001d0dcc3, type: 3}
+  - {fileID: 21300000, guid: 216c72c195b17624788bfe125e15c746, type: 3}
+  - {fileID: 21300000, guid: 1e8c4f572ae0c7a459f6c8dc7c7629c5, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
@@ -612,8 +613,8 @@ SpriteShapeRenderer:
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   - {fileID: 21300000, guid: 608e61deb05c54660bebf5a4dd2ee02d, type: 3}
   m_LocalAABB:
-    m_Center: {x: 0, y: 0.25, z: 0}
-    m_Extent: {x: 1.5000001, y: 1.2500001, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 1.2500001, y: 1.2500001, z: 0}
   m_SpriteSortPoint: 0
 --- !u!4 &571399699
 Transform:
@@ -644,8 +645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 100
   numberOfPoints: 67
-  percentageOfPoints: 0
   distBetweenPoints: 3
+  plateau: 0
 --- !u!60 &571399701
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -690,11 +691,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.99899995, y: -1}
+    - - {x: -0.99950016, y: -0.99950004}
       - {x: -0.99950004, y: 0.99950016}
       - {x: 0.99950016, y: 0.99950004}
-      - {x: 1, y: -1}
-      - {x: -0.99899995, y: -1}
+      - {x: 0.99950004, y: -0.99950016}
+      - {x: -0.99950016, y: -0.99950004}
   m_UseDelaunayMesh: 0
 --- !u!68 &571399702
 EdgeCollider2D:
@@ -731,11 +732,11 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.99899995, y: -1}
+  - {x: -0.99950016, y: -0.99950004}
   - {x: -0.99950004, y: 0.99950016}
   - {x: 0.99950016, y: 0.99950004}
-  - {x: 1, y: -1}
-  - {x: -0.99899995, y: -1}
+  - {x: 0.99950004, y: -0.99950016}
+  - {x: -0.99950016, y: -0.99950004}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
